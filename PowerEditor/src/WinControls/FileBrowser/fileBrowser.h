@@ -128,10 +128,12 @@ public:
 
 	void setBackgroundColor(COLORREF bgColour) override {
 		TreeView_SetBkColor(_treeView.getHSelf(), bgColour);
+		TreeView_SetBkColor(_treeViewSearchResult.getHSelf(), bgColour);
 	}
 
 	void setForegroundColor(COLORREF fgColour) override {
 		TreeView_SetTextColor(_treeView.getHSelf(), fgColour);
+		TreeView_SetTextColor(_treeViewSearchResult.getHSelf(), fgColour);
 	}
 
 	std::wstring getNodePath(HTREEITEM node) const;
