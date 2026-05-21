@@ -166,3 +166,19 @@ PowerEditor/src/MISC/md5/RCa06792
 *.db
 *.sln
 *.opendb
+
+#-------------------------------------------------------------------------------
+# Claude Code
+
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+.claudeignore
+.mcp.json
+
+#-------------------------------------------------------------------------------
+# spec-kit
+
+.specify/
+specs/
+my-project/
