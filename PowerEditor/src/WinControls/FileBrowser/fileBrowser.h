@@ -128,10 +128,12 @@ public:
 
 	void setBackgroundColor(COLORREF bgColour) override {
 		TreeView_SetBkColor(_treeView.getHSelf(), bgColour);
+		TreeView_SetBkColor(_treeViewSearchResult.getHSelf(), bgColour);
 	}
 
 	void setForegroundColor(COLORREF fgColour) override {
 		TreeView_SetTextColor(_treeView.getHSelf(), fgColour);
+		TreeView_SetTextColor(_treeViewSearchResult.getHSelf(), fgColour);
 	}
 
 	std::wstring getNodePath(HTREEITEM node) const;
@@ -159,6 +161,13 @@ protected:
 	std::vector<HIMAGELIST> _iconListVector;
 
 	TreeView _treeView;
+	TreeView _treeViewSearchResult;
+	TreeView* _pActiveTreeView = &_treeView;
+
+	HWND _hFilterEdit = nullptr;
+	HWND _hFilterClear = nullptr;
+	HFONT _hFontFilterEdit = nullptr;
+
 	HIMAGELIST _hImaLst = nullptr;
 
 	HMENU _hGlobalMenu = NULL;
@@ -174,9 +183,12 @@ protected:
 	std::wstring _expandAllFolders = L"Unfold all";
 	std::wstring _collapseAllFolders = L"Fold all";
 	std::wstring _locateCurrentFile = L"Locate current file";
+	std::wstring _filterTip = L"Filter files...";
+	std::wstring _filterClearTip = L"Clear filter";
 
 	void initPopupMenus();
 	void destroyMenus();
+	void filterAndSwitchView();
 
 	BrowserNodeType getNodeType(HTREEITEM hItem);
 	void popupMenuCmd(int cmdID);
